@@ -148,6 +148,6 @@
     options = "--delete-older-than 1w";
   };
   # Optomize storage
-  nix.settings.auto-optomise-store = true;
+  nix.settings.auto-optimise-store = true;
 
 }
