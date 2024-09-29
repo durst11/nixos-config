@@ -138,5 +138,16 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+  
+  # limit number of generations to keep
+  boot.loader.systemd-boot.configurationLimit = 10;
+  # perform garbage collection weekly
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+  # Optomize storage
+  nix.settings.auto-optomise-store = true;
 
 }
