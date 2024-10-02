@@ -30,7 +30,8 @@
     wget
     curl
   ];
-
+  #set default editor
+  environment.variables.EDITOR = "neovim";
 
 
   # Enable networking
@@ -66,7 +67,7 @@
   services.xserver.xkb.variant = "";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -85,11 +86,9 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
   
-  # Cosmic Desktop
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
+  # Flatpak support
   services.flatpak.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

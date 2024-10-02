@@ -8,24 +8,14 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Cosmic Desktop
-    nixpkgs.follows = "nixos-cosmic/nixpkgs"; 
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixos-cosmic, ... }: {
+  outputs = { nixpkgs, home-manager, ... }@inputs: {
     # hostname
     nixosConfigurations = {
       nix-t560 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          {
-            nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            };
-          }
-          nixos-cosmic.nixosModules.default
           ./configuration.nix
 
           # make home-manager as a module of nixos
