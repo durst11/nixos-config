@@ -10,7 +10,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = inputs@{ nixpkgs, home-manager, ... }: {
     # hostname
     nixosConfigurations = {
       nix-t560 = nixpkgs.lib.nixosSystem {
