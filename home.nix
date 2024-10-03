@@ -7,9 +7,10 @@
   # User Packages
   home.packages = with pkgs; [
     
+    asciinema
     fastfetch
     nnn # terminal file manager
-
+     
 
     # Utils
     eza # replace for 'ls'
