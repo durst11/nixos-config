@@ -29,6 +29,7 @@
     neovim
     wget
     curl
+    micro
   ];
   #set default editor
   environment.variables.EDITOR = "neovim";
