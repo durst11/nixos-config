@@ -23,16 +23,10 @@
 
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    neovim
-    wget
-    curl
-    micro
-  ];
+
+
   #set default editor
-  environment.variables.EDITOR = "neovim";
+  environment.variables.EDITOR = "micro";
 
 
   # Enable networking
@@ -62,6 +56,17 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  # Default GNOME apps to remove
+  environment.gnome.excludePackages = (with pkgs; [
+  	gnome-tour
+  	gnome.geary
+  	gnome.tali
+  	gnome.iagno
+  	gnome.hitori
+  	gnome.atomix
+  	gnome.epiphany
+  ]);
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -110,11 +115,19 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  #environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  #];
 
+  # System Packages
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    neovim
+    wget
+    curl
+    micro
+    ffmpeg
+    gnome.gnome-terminal
+  ];
+ 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
