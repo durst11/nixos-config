@@ -8,15 +8,21 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      #inputs.nixpkgs.follows = "";
+    };
   };
+  
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
     # hostname
     nixosConfigurations = {
       nix-t560 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        extraSpecialArgs = { inherit inputs; };
         modules = [
+          ./home.nix
           ./configuration.nix
 
           # make home-manager as a module of nixos
