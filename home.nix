@@ -25,6 +25,12 @@
     userEmail = "durst.11@protonmail.com";
   };
 
+  # WezTerm
+  programs.wezterm = {
+  	enable = true;
+  	packages = inputs.wezterm.packages.${pkgs.system}.default;
+  };
+
   home.stateVersion = "24.05";
   
   # let home manager install and manage itself
