@@ -27,6 +27,9 @@
 
   #set default editor
   environment.variables.EDITOR = "micro";
+  
+  # Tailscale
+  services.tailscale.enable = true;
 
 
   # Enable networking
